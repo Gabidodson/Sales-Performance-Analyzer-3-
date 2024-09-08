@@ -28,3 +28,22 @@ return "Needs Improvement";
 //example console.log(determinePerformanceRating(1500))
 
 
+
+//Function to identify Top and Bottom Performers
+function findTopAndBottomPerformers (salespeople){
+    if (salespeople.length===0){
+        return {topPerformer: null, bottomPerformer:null};
+}
+const result = salespeople.reduce ((acc,current) => {
+    if(!acc.topPerformer|| current.totalSales > acc.topPerformer.totalSales){
+        acc.topPerformer = current;
+}
+if (!acc.bottomPerformer || current.totalSales < acc.bottomPerformer.totalSales){
+    acc.bottomPerformer = current;
+}
+return acc;
+},{topPerformer:null, bottomPerformer:null});
+
+return result; 
+}
+
